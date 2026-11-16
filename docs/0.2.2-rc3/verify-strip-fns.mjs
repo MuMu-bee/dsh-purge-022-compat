@@ -1,5 +1,5 @@
 // 验证 stripDeadSubagentRows / stripToolFilter 的行为（含误伤与幂等）
-const MOD = "file:///C:/Users/TT/.dsh/profiles/desktop/node_modules/dsh-purge/lib/redteam/index.js";
+const MOD = new URL("../../lib/redteam/index.js", import.meta.url).href; // 仓库根目录下
 const { stripDeadSubagentRows, stripToolFilter } = await import(MOD);
 
 let pass = 0, fail = 0;

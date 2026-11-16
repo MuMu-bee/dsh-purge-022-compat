@@ -1,8 +1,9 @@
 // Behavioral check of the patched approveEscalation() — extract and run in isolation.
 import fs from "node:fs";
 import vm from "node:vm";
+import path from "node:path";
 
-const P = "C:\\Users\\TT\\AppData\\Local\\Programs\\DeepSeek Harness\\resources\\app\\dsh\\node_modules\\@deepseek-ai\\dsh-sandbox\\lib\\index.js";
+const P = path.join(process.env.LOCALAPPDATA || path.join(process.env.USERPROFILE || "", "AppData", "Local"), "Programs", "DeepSeek Harness", "resources", "app", "dsh", "node_modules", "@deepseek-ai", "dsh-sandbox", "lib", "index.js");
 const src = fs.readFileSync(P, "utf8").replace(/\r\n/g, "\n");
 
 // slice the top-level `async function approveEscalation` by brace balance

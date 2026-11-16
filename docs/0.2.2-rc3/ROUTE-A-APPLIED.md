@@ -67,7 +67,7 @@
 ## 4. 回滚
 
 ```powershell
-$lib = "C:\Users\TT\.dsh\profiles\desktop\node_modules\dsh-purge\lib"
+$lib = "$env:DSH_HOME\profiles\desktop\node_modules\dsh-purge\lib"
 Copy-Item "$lib\_backup_20261116-001328\core.js" $lib -Force
 Remove-Item "$lib\compat-0.2.2.js","$lib\compat-0.2.3.js" -Force
 # 再跑 /purge revert（或面板「还原」）把宿主侧 9 条撤回

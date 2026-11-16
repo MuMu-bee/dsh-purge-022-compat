@@ -1,6 +1,6 @@
 # dsh-purge 补齐记录 / compat fill — DSH 0.2.2-rc.3
 
-时间：2026-11-15 · 宿主：desktop · DSH_HOME `C:\Users\TT\.dsh`
+时间：2026-11-15 · 宿主：desktop · DSH_HOME `%DSH_HOME%`（默认 `~/.dsh`）
 
 ## 1. 结论
 
@@ -73,11 +73,11 @@
 
 ```powershell
 # 重新补齐（幂等，已应用的会跳过）
-& "D:\Program Files\nodejs\node.exe" "C:\Users\TT\.dsh\dsh-purge\compat-0.2.2.mjs" --dry-run
-& "D:\Program Files\nodejs\node.exe" "C:\Users\TT\.dsh\dsh-purge\compat-0.2.2.mjs"
+& node "$env:DSH_HOME\dsh-purge\compat-0.2.2.mjs" --dry-run
+& node "$env:DSH_HOME\dsh-purge\compat-0.2.2.mjs"
 
 # 行为验证
-& "D:\Program Files\nodejs\node.exe" "C:\Users\TT\.dsh\dsh-purge\verify-escalation.mjs"
+& node "$env:DSH_HOME\dsh-purge\verify-escalation.mjs"
 
 # 回滚全部清洗（保留 prompt-inject.md）
 /purge revert

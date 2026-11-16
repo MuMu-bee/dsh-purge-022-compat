@@ -24,7 +24,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const AI_BASE = process.env.DSH_PURGE_AIBASE ||
-  "C:\\Users\\TT\\AppData\\Local\\Programs\\DeepSeek Harness\\resources\\app\\dsh\\node_modules\\@deepseek-ai";
+  path.join(process.env.LOCALAPPDATA || path.join(process.env.USERPROFILE || "", "AppData", "Local"), "Programs", "DeepSeek Harness", "resources", "app", "dsh", "node_modules", "@deepseek-ai");
 const DRY = process.argv.includes("--dry-run");
 
 const TASKS = [

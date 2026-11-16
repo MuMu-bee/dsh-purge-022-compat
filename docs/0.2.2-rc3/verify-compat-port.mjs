@@ -1,8 +1,9 @@
 // 移植后验证：在真宿主 aiBase 上跑 compat 后的 patchStatus，并列出新增键解析结果
-const CORE = "file:///C:/Users/TT/.dsh/profiles/desktop/node_modules/dsh-purge/lib/core.js";
+import path from "node:path";
+const CORE = new URL("../../lib/core.js", import.meta.url).href; // 仓库根目录下的 lib/core.js
 const core = await import(CORE);
 
-const AI_BASE = "C:\\Users\\TT\\AppData\\Local\\Programs\\DeepSeek Harness\\resources\\app\\dsh\\node_modules\\@deepseek-ai";
+const AI_BASE = process.env.DSH_PURGE_AIBASE || path.join(process.env.LOCALAPPDATA || path.join(process.env.USERPROFILE || "", "AppData", "Local"), "Programs", "DeepSeek Harness", "resources", "app", "dsh", "node_modules", "@deepseek-ai");
 
 console.log("ALL_PATCHES 总数 =", core.ALL_PATCHES.length);
 const ids = core.ALL_PATCHES.map((p) => p.id);
